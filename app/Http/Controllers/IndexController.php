@@ -7,12 +7,9 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    protected MockService $mockService;
 
-    public function __construct(MockService $mockService)
-    {
-        $this->mockService = $mockService;
-    }
+    public function __construct(protected MockService $mockService)
+    {}
 
     public function index()
     {

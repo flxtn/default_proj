@@ -10,7 +10,7 @@
 
 @section('content')
 
-<div class="flex justify-center items-center p-20 border border-slate-800 mt-10">
+<div class="flex justify-center items-center p-20 border border-slate-800 mt-10 flex-col">
     <form action="{{route("register")}}" method="POST" class="flex flex-col gap-3">
 
         @csrf
@@ -24,6 +24,7 @@
         <input class="p-1 border border-gray-500" type="password" name="password_confirmation" placeholder="confirm password"></input>
         <input class="p-1 cursor-pointer hover:opacity-50 mt-2" type="submit" name="submit"></input>
     </form>
+    <a href="{{route('login')}}" class="text-sm text-slate-600 hover:opacity-50">Login page</a>
 </div>
 
 @endsection

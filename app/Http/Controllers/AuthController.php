@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
 
-    protected AuthService $authService;
 
-    public function __construct(AuthService $authService)
-    {
-        $this->authService = $authService;
-    }
+    public function __construct(protected AuthService $authService)
+    {}
 
     public function LoginPage()
     {
@@ -25,18 +24,20 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        if($this->authService->register($request))
+        $data = $request->validated();
+        if($this->authService->register($data))
         {
             return redirect()->route('homePage');
         }
         return redirect()->back()->withErrors(['email' => 'Wrong email, name or password']);
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        if ($this->authService->login($request))
+        $data = $request->validated();
+        if ($this->authService->login($data))
         {
             return redirect()->route('homePage'); 
         }

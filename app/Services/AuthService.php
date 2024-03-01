@@ -9,17 +9,12 @@ use Illuminate\Http\Request;
 
 class AuthService
 {
-    public function register(Request $request)
+    public function register(array $data)
     {
-        $data = $request->validate([
-            "name" => ["required", "string"],
-            "email" => ["required","email","string", "unique:users,email"],
-            "password" => ["required", "confirmed"],
-        ]);
 
         $user = User::create(["name" => $data["name"],
         "email" => $data["email"], 
-        "password" => bcrypt($data["password"])]);
+        "password" => $data["password"]]);
 
         if ($user) {
             auth("web")->login($user);
@@ -28,12 +23,8 @@ class AuthService
         return false;
     }
 
-    public function login(Request $request)
+    public function login(array $data)
     {
-        $data = $request->validate([
-            "email" => ["required","email","string"],
-            "password" => ["required"],
-        ]);
 
         if (auth("web")->attempt($data))
         {
@@ -45,4 +36,3 @@ class AuthService
 
 }
 
-?>
