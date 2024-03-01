@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\MockService;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class IndexController extends Controller
 {
@@ -11,7 +12,7 @@ class IndexController extends Controller
     public function __construct(protected MockService $mockService)
     {}
 
-    public function index()
+    public function index(): View
     {
         $data = $this->mockService->getData();
         return view('homepage', ["data" => $data]);

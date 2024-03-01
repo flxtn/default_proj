@@ -3,9 +3,6 @@
 namespace App\Services;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-
-
 
 class AuthService
 {
@@ -14,7 +11,8 @@ class AuthService
 
         $user = User::create(["name" => $data["name"],
         "email" => $data["email"], 
-        "password" => $data["password"]]);
+        "password" => $data["password"]
+    ]);
 
         if ($user) {
             auth("web")->login($user);
