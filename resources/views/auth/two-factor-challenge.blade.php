@@ -1,4 +1,5 @@
-@extends('layout.layout')
+@extends('layout.auth-layout')
+
 
 @section('title', 'QRCode')
 
