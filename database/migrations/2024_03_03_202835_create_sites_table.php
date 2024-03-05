@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('domain');
             $table->string('description');
-            $table->number('queries')->nullable();
+            $table->integer('queries')->nullable();
             $table->string('hosting');
             $table->string('status');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

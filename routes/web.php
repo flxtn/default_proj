@@ -33,6 +33,9 @@ Route::middleware("guest")->group(function(){
 Route::middleware("auth")->group(function(){
     Route::get('/', [IndexController::class, 'index'])->name('homePage');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/create-site', [IndexController::class, 'create_item'])->name('create-site');
+    Route::get('/search', [IndexController::class, 'search'])->name('search');
+    Route::get('/sort', [IndexController::class, 'sort'])->name('sort');
 });
 
 

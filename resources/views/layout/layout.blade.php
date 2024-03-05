@@ -19,7 +19,7 @@
         <header class="mb-5 border-b border-slate-400 flex justify-center items-center flex-row">
             @yield('header')
         </header>
-        <main class="flex justify-center">
+        <main class="flex">
             @yield('content')
         </main>
     </body>

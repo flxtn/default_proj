@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CodeRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Models\User;
 use App\Services\AuthService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -57,7 +56,7 @@ class AuthController extends Controller
     }
 
 
-    public function EnableTwoFa(CodeRequest $request, $id)
+    public function EnableTwoFa(CodeRequest $request, $id): View | RedirectResponse
     {
         $data = $request->validated();
         list('user' => $user, 'isValid' => $isValid) = $this->authService->checkCode($id, $data); 
@@ -72,7 +71,7 @@ class AuthController extends Controller
     }
 
 
-    public function TwoFactorLogin(CodeRequest $request, $id)
+    public function TwoFactorLogin(CodeRequest $request, $id): View | RedirectResponse
     {
         $data = $request->validated();
         list('user' => $user, 'isValid' => $isValid) = $this->authService->checkCode($id, $data); 
