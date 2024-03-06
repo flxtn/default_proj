@@ -26,13 +26,13 @@ class SiteService
 
     }
 
-    public function searchSite(array $data)
+    public function searchSite(array $data):array
     {
        return Site::where('user_id', auth()->user()->id)
        ->where($data['column_name'], 'LIKE', '%' . $data['searchText'] . '%')->get();
     }
 
-    public function sortSites(array $data)
+    public function sortSites(array $data):array 
     {
         $column_name = $data['column_name'];
         if ($column_name === "Status")

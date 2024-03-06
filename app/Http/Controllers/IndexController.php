@@ -35,7 +35,7 @@ class IndexController extends Controller
         return view('homepage', ["data" => $sites]);
     }
     
-    public function sort(SortRequest $request)
+    public function sort(SortRequest $request):View
     {
         $data = $request->validated();
         $sites = $this->siteService->sortSites($data);

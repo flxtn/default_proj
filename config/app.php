@@ -160,6 +160,7 @@ return [
          * Package Service Providers...
          */
         PragmaRX\Google2FALaravel\ServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         /*
          * Application Service Providers...
          */

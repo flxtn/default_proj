@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Site::class);
     }
+
+    public function domains()
+    {
+        return $this->hasMany(Domain::class);
+    }
 }

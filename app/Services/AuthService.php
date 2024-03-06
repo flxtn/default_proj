@@ -64,7 +64,7 @@ class AuthService
         return $isValidCode;
     }
 
-    public function checkCode(string $id, array $data)
+    public function checkCode(string $id, array $data): array
     {
         $user = User::findOrFail($id);
         $secret = $user->two_factor_secret;
